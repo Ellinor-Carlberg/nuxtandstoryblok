@@ -1,66 +1,53 @@
 <template>
-  <section class="container">
-    <div>
-      <logo/>
-      <h1 class="title">
-        nuxtandstoryblok
-      </h1>
-      <h2 class="subtitle">
-        Nuxt blog with cms storyblok
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey">GitHub</a>
-      </div>
-    </div>
+  <section class="posts">
+   <PostPreview v-for="post in posts" 
+   :key="post.id"  
+   :title="post.title" 
+   :excerpt="post.previewText" 
+   :thumbnailImage="post.thumbnailUrl" :id="post.id"/>
+   
+
+  
   </section>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-
+import PostPreview from '@/components/Blog/PostPreview'
 export default {
   components: {
-    Logo
-  }
+PostPreview
+  },
+
+ data() {
+   return {
+     posts: [{
+
+       title: 'A first snack',
+       previewText: 'this will be awesome',
+       thumbnailUrl: 'https://images.unsplash.com/photo-1533417177250-227597f5b264?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80',
+       id: 'first-post'
+     },
+     {
+
+       title: 'A second snack',
+       previewText: 'this will be awesome',
+       thumbnailUrl: 'https://images.unsplash.com/photo-1542282811-943ef1a977c3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1504&q=80',
+       id: 'second-post'
+     }
+     ]
+   }
+ }
 }
 </script>
 
-<style>
+<style scoped>
 
-.container {
-  min-height: 100vh;
+.posts {
+  padding-top: 2rem;
   display: flex;
-  justify-content: center;
   align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+  justify-content: center;
+  /* flex-direction: column; */
+  flex-wrap: wrap; 
 }
 </style>
