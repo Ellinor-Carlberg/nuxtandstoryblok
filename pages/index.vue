@@ -17,7 +17,26 @@ export default {
   components: {
 PostPreview
   },
+  asyncData(context){
+    return context.app.$storyapi.get('cdn/stories/', {
+      version: 'draft',
+      starts_with: 'blog/'
 
+    }).then( res => {
+      console.log(res.data.stories)
+      return {
+        posts: res.data.stories.map( bp => {
+        return {
+          id: bp.slug,
+          title: bp.content.title,
+          previewText: bp.content.summary,
+          thumbnailUrl: bp.content.thumbnail
+        }
+      })
+      }
+    }) 
+  }
+/* 
  data() {
    return {
      posts: [{
@@ -36,7 +55,7 @@ PostPreview
      }
      ]
    }
- }
+ } */
 }
 </script>
 
