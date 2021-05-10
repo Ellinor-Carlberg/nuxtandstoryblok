@@ -9,13 +9,13 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "@nuxtjs/axios": "^5.0.0",
     "cross-env": "^5.2.0",
     "nuxt": "^2.0.0",
-    "@nuxtjs/axios": "^5.0.0"
+    "storyblok-nuxt": "^2.0.1"
   },
   "devDependencies": {
     "nodemon": "^1.11.0",
