@@ -1,7 +1,7 @@
 <template>
-  <nuxt-link 
+  <nuxt-link class="post-preview" 
    :to="id">
-     <article class="post-preview">
+     <article >
       <div 
       :style="{backgroundImage: 'url(' + thumbnailImage + ')'}" class="post-preview-thumbnail" ></div>
       <div class="post-preview-content">
@@ -43,6 +43,7 @@ a{
 
 .post-preview {
     width: 90%;
+    max-width: 40rem;
     margin: 1rem;
     height: 20rem;
     border-radius: 3px;
